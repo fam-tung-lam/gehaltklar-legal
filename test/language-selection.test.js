@@ -42,16 +42,19 @@ test("German is used when no browser preference is supported", () => {
   }), DEFAULT_LANGUAGE);
 });
 
-test("the page keeps a flagged language dropdown available", async () => {
+test("the app bar keeps language and theme controls available", async () => {
   const page = await readFile(new URL("../index.html", import.meta.url), "utf8");
 
-  assert.match(page, /<select id="language-select">/);
+  assert.match(page, /<header class="app-bar">/);
+  assert.match(page, /<a class="wordmark" href="#top">Gehalt<span>Klar<\/span><\/a>/);
+  assert.match(page, /<select id="language-select"/);
   assert.match(page, /🇩🇪 Deutsch/);
   assert.match(page, /🇬🇧 English/);
   assert.match(page, /🇷🇺 Русский/);
   assert.match(page, /🇺🇦 Українська/);
   assert.match(page, /🇻🇳 Tiếng Việt/);
   assert.match(page, /position: sticky;/);
+  assert.match(page, /class="language-select__globe"/);
   assert.match(page, /id="theme-button"/);
   assert.match(page, /aria-label="Helles oder dunkles Design umschalten"/);
   assert.match(page, /gk_legal_theme/);
