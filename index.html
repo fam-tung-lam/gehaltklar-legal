@@ -4,7 +4,17 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="color-scheme" content="light dark">
+  <meta
+    name="description"
+    content="Datenschutzerklärung für die mobile Anwendung GehaltKlar."
+  >
   <title>Datenschutzerklärung – GehaltKlar</title>
+  <link rel="alternate" hreflang="de" href="?lang=de">
+  <link rel="alternate" hreflang="en" href="?lang=en">
+  <link rel="alternate" hreflang="ru" href="?lang=ru">
+  <link rel="alternate" hreflang="uk" href="?lang=uk">
+  <link rel="alternate" hreflang="vi" href="?lang=vi">
+  <link rel="alternate" hreflang="x-default" href="?lang=de">
   <style>
     :root {
       font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
@@ -46,6 +56,57 @@
     p,
     li {
       line-height: 1.7;
+    }
+
+    .language-switcher {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 32px;
+    }
+
+    .language-switcher__label {
+      color: #475569;
+      font-size: 0.9rem;
+      font-weight: 650;
+    }
+
+    .language-switcher__options {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      min-width: 0;
+    }
+
+    .language-button {
+      min-width: 44px;
+      min-height: 38px;
+      padding: 7px 10px;
+      border: 1px solid #cbd5e1;
+      border-radius: 9px;
+      color: #334155;
+      background: #ffffff;
+      font: inherit;
+      font-size: 0.9rem;
+      font-weight: 700;
+      cursor: pointer;
+    }
+
+    .language-button:hover {
+      border-color: #2563eb;
+      color: #1d4ed8;
+    }
+
+    .language-button:focus-visible {
+      outline: 3px solid rgba(37, 99, 235, 0.35);
+      outline-offset: 2px;
+    }
+
+    .language-button[aria-pressed="true"] {
+      border-color: #2563eb;
+      color: #ffffff;
+      background: #2563eb;
     }
 
     .summary {
@@ -96,6 +157,27 @@
         color: #f8fafc;
       }
 
+      .language-switcher__label {
+        color: #cbd5e1;
+      }
+
+      .language-button {
+        border-color: #475569;
+        color: #e2e8f0;
+        background: #1e293b;
+      }
+
+      .language-button:hover {
+        border-color: #60a5fa;
+        color: #bfdbfe;
+      }
+
+      .language-button[aria-pressed="true"] {
+        border-color: #60a5fa;
+        color: #0f172a;
+        background: #93c5fd;
+      }
+
       .summary {
         background: #172554;
         border-left-color: #60a5fa;
@@ -114,38 +196,52 @@
 </head>
 <body>
   <main>
-    <h1>Datenschutzerklärung</h1>
-    <p><strong>App:</strong> GehaltKlar</p>
+    <nav class="language-switcher" aria-labelledby="language-label">
+      <span id="language-label" class="language-switcher__label" data-i18n="languageLabel">
+        Sprache
+      </span>
+      <div class="language-switcher__options" role="group">
+        <button class="language-button" type="button" data-language="de" aria-pressed="true">DE</button>
+        <button class="language-button" type="button" data-language="en" aria-pressed="false">EN</button>
+        <button class="language-button" type="button" data-language="ru" aria-pressed="false">RU</button>
+        <button class="language-button" type="button" data-language="uk" aria-pressed="false">UK</button>
+        <button class="language-button" type="button" data-language="vi" aria-pressed="false">VI</button>
+      </div>
+    </nav>
 
-    <p class="summary">
+    <h1 data-i18n="heading">Datenschutzerklärung</h1>
+    <p><strong data-i18n="appLabel">App:</strong> GehaltKlar</p>
+
+    <p class="summary" data-i18n="summary">
       GehaltKlar verarbeitet Gehaltsangaben ausschließlich lokal auf dem Gerät.
       Die App verwendet kein Benutzerkonto, keine Werbung, keine Analyse- oder
       Trackingdienste und übermittelt keine in der App eingegebenen Daten an uns.
     </p>
 
-    <h2>1. Verantwortlicher und Kontakt</h2>
+    <h2 data-i18n="controllerTitle">1. Verantwortlicher und Kontakt</h2>
     <p>
-      Verantwortlich für GehaltKlar ist Pham Tung Lam.<br>
-      Kontakt: <a href="mailto:gehaltklar.support@gmail.com">gehaltklar.support@gmail.com</a>
+      <span data-i18n="controllerText">Verantwortlich für GehaltKlar ist Pham Tung Lam.</span><br>
+      <span data-i18n="contactLabel">Kontakt:</span>
+      <a href="mailto:gehaltklar.support@gmail.com">gehaltklar.support@gmail.com</a>
     </p>
 
-    <h2>2. Verarbeitung innerhalb der App</h2>
-    <p>
+    <h2 data-i18n="processingTitle">2. Verarbeitung innerhalb der App</h2>
+    <p data-i18n="processingText">
       Die von Nutzerinnen und Nutzern eingegebenen Angaben werden ausschließlich
       auf dem jeweiligen Gerät verarbeitet, um eine unverbindliche Schätzung des
       Nettogehalts zu berechnen. Es findet keine Übertragung dieser Angaben an
       einen Server des Entwicklers statt.
     </p>
 
-    <h2>3. Lokale Daten und Referenzwerte</h2>
-    <p>
+    <h2 data-i18n="localDataTitle">3. Lokale Daten und Referenzwerte</h2>
+    <p data-i18n="localDataText">
       Für Berechnungen verwendete Referenzwerte werden mit der App ausgeliefert
       und lokal auf dem Gerät gelesen. GehaltKlar bietet keine Cloud-Synchronisierung
       und lädt keine Berechnungsdaten zur Laufzeit von einem eigenen Backend.
     </p>
 
-    <h2>4. Werbung, Analyse und Drittanbieter-SDKs</h2>
-    <p>
+    <h2 data-i18n="thirdPartiesTitle">4. Werbung, Analyse und Drittanbieter-SDKs</h2>
+    <p data-i18n="thirdPartiesText">
       GehaltKlar enthält keine Werbung und verwendet keine Analyse-, Tracking-
       oder Werbe-SDKs. Der Vertrieb und die Installation über Google Play oder
       den Apple App Store können unabhängig davon eine Datenverarbeitung durch
@@ -153,8 +249,8 @@
       des jeweiligen Plattformbetreibers.
     </p>
 
-    <h2>5. Supportanfragen</h2>
-    <p>
+    <h2 data-i18n="supportTitle">5. Supportanfragen</h2>
+    <p data-i18n="supportText">
       Wenn Sie uns freiwillig per E-Mail kontaktieren, verarbeiten wir Ihre
       E-Mail-Adresse und die von Ihnen übermittelten Inhalte ausschließlich zur
       Bearbeitung Ihrer Anfrage. Die Nachricht wird gelöscht, sobald sie für
@@ -162,15 +258,15 @@
       Aufbewahrungspflichten entgegenstehen.
     </p>
 
-    <h2>6. Minderjährige</h2>
-    <p>
+    <h2 data-i18n="minorsTitle">6. Minderjährige</h2>
+    <p data-i18n="minorsText">
       GehaltKlar ist für eine allgemeine Zielgruppe geeignet und nicht speziell
       an Kinder gerichtet. Die App erhebt wissentlich keine personenbezogenen
       Daten von Minderjährigen.
     </p>
 
-    <h2>7. Ihre Rechte</h2>
-    <p>
+    <h2 data-i18n="rightsTitle">7. Ihre Rechte</h2>
+    <p data-i18n="rightsText">
       Soweit wir im Rahmen einer Supportanfrage personenbezogene Daten verarbeiten,
       können Sie Auskunft, Berichtigung, Löschung oder Einschränkung der Verarbeitung
       verlangen und einer Verarbeitung widersprechen. Wenden Sie sich dazu an die
@@ -178,16 +274,212 @@
       Datenschutzaufsichtsbehörde beschweren.
     </p>
 
-    <h2>8. Änderungen dieser Datenschutzerklärung</h2>
-    <p>
+    <h2 data-i18n="changesTitle">8. Änderungen dieser Datenschutzerklärung</h2>
+    <p data-i18n="changesText">
       Wir aktualisieren diese Datenschutzerklärung, wenn sich Funktionen der App
       oder rechtliche Anforderungen ändern. Die jeweils aktuelle Fassung ist unter
       dieser Adresse öffentlich erreichbar.
     </p>
 
-    <footer>
-      Stand: 31. Juli 2026
-    </footer>
+    <footer data-i18n="updated">Stand: 31. Juli 2026</footer>
   </main>
+
+  <script>
+    (() => {
+      "use strict";
+
+      const DEFAULT_LANGUAGE = "de";
+      const SUPPORTED_LANGUAGES = ["de", "en", "ru", "uk", "vi"];
+      const translations = {
+        de: {
+          pageTitle: "Datenschutzerklärung – GehaltKlar",
+          metaDescription: "Datenschutzerklärung für die mobile Anwendung GehaltKlar.",
+          languageLabel: "Sprache",
+          heading: "Datenschutzerklärung",
+          appLabel: "App:",
+          summary: "GehaltKlar verarbeitet Gehaltsangaben ausschließlich lokal auf dem Gerät. Die App verwendet kein Benutzerkonto, keine Werbung, keine Analyse- oder Trackingdienste und übermittelt keine in der App eingegebenen Daten an uns.",
+          controllerTitle: "1. Verantwortlicher und Kontakt",
+          controllerText: "Verantwortlich für GehaltKlar ist Pham Tung Lam.",
+          contactLabel: "Kontakt:",
+          processingTitle: "2. Verarbeitung innerhalb der App",
+          processingText: "Die von Nutzerinnen und Nutzern eingegebenen Angaben werden ausschließlich auf dem jeweiligen Gerät verarbeitet, um eine unverbindliche Schätzung des Nettogehalts zu berechnen. Es findet keine Übertragung dieser Angaben an einen Server des Entwicklers statt.",
+          localDataTitle: "3. Lokale Daten und Referenzwerte",
+          localDataText: "Für Berechnungen verwendete Referenzwerte werden mit der App ausgeliefert und lokal auf dem Gerät gelesen. GehaltKlar bietet keine Cloud-Synchronisierung und lädt keine Berechnungsdaten zur Laufzeit von einem eigenen Backend.",
+          thirdPartiesTitle: "4. Werbung, Analyse und Drittanbieter-SDKs",
+          thirdPartiesText: "GehaltKlar enthält keine Werbung und verwendet keine Analyse-, Tracking- oder Werbe-SDKs. Der Vertrieb und die Installation über Google Play oder den Apple App Store können unabhängig davon eine Datenverarbeitung durch Google beziehungsweise Apple auslösen. Dafür gelten die Datenschutzbestimmungen des jeweiligen Plattformbetreibers.",
+          supportTitle: "5. Supportanfragen",
+          supportText: "Wenn Sie uns freiwillig per E-Mail kontaktieren, verarbeiten wir Ihre E-Mail-Adresse und die von Ihnen übermittelten Inhalte ausschließlich zur Bearbeitung Ihrer Anfrage. Die Nachricht wird gelöscht, sobald sie für diesen Zweck nicht mehr erforderlich ist, sofern keine gesetzlichen Aufbewahrungspflichten entgegenstehen.",
+          minorsTitle: "6. Minderjährige",
+          minorsText: "GehaltKlar ist für eine allgemeine Zielgruppe geeignet und nicht speziell an Kinder gerichtet. Die App erhebt wissentlich keine personenbezogenen Daten von Minderjährigen.",
+          rightsTitle: "7. Ihre Rechte",
+          rightsText: "Soweit wir im Rahmen einer Supportanfrage personenbezogene Daten verarbeiten, können Sie Auskunft, Berichtigung, Löschung oder Einschränkung der Verarbeitung verlangen und einer Verarbeitung widersprechen. Wenden Sie sich dazu an die oben genannte Kontaktadresse. Außerdem können Sie sich bei einer zuständigen Datenschutzaufsichtsbehörde beschweren.",
+          changesTitle: "8. Änderungen dieser Datenschutzerklärung",
+          changesText: "Wir aktualisieren diese Datenschutzerklärung, wenn sich Funktionen der App oder rechtliche Anforderungen ändern. Die jeweils aktuelle Fassung ist unter dieser Adresse öffentlich erreichbar.",
+          updated: "Stand: 31. Juli 2026"
+        },
+        en: {
+          pageTitle: "Privacy Policy – GehaltKlar",
+          metaDescription: "Privacy policy for the GehaltKlar mobile application.",
+          languageLabel: "Language",
+          heading: "Privacy Policy",
+          appLabel: "App:",
+          summary: "GehaltKlar processes salary information exclusively and locally on the device. The app does not use a user account, advertising, analytics, or tracking services, and it does not transmit any data entered in the app to us.",
+          controllerTitle: "1. Controller and contact",
+          controllerText: "The controller responsible for GehaltKlar is Pham Tung Lam.",
+          contactLabel: "Contact:",
+          processingTitle: "2. Processing within the app",
+          processingText: "Information entered by users is processed exclusively on their device to calculate a non-binding estimate of net salary. This information is not transmitted to a server operated by the developer.",
+          localDataTitle: "3. Local data and reference values",
+          localDataText: "Reference values used for calculations are included with the app and read locally on the device. GehaltKlar does not offer cloud synchronization and does not download calculation data from its own backend at runtime.",
+          thirdPartiesTitle: "4. Advertising, analytics, and third-party SDKs",
+          thirdPartiesText: "GehaltKlar contains no advertising and does not use analytics, tracking, or advertising SDKs. Distribution and installation through Google Play or the Apple App Store may independently result in data processing by Google or Apple, respectively. The privacy policy of the relevant platform operator applies.",
+          supportTitle: "5. Support requests",
+          supportText: "If you voluntarily contact us by email, we process your email address and the content you provide solely to handle your request. The message will be deleted once it is no longer required for this purpose, unless statutory retention obligations apply.",
+          minorsTitle: "6. Minors",
+          minorsText: "GehaltKlar is suitable for a general audience and is not specifically directed at children. The app does not knowingly collect personal data from minors.",
+          rightsTitle: "7. Your rights",
+          rightsText: "Where we process personal data in connection with a support request, you may request access, rectification, erasure, or restriction of processing, and you may object to processing. Please use the contact address stated above. You may also lodge a complaint with a competent data protection supervisory authority.",
+          changesTitle: "8. Changes to this Privacy Policy",
+          changesText: "We update this Privacy Policy when the app's functionality or legal requirements change. The current version is publicly available at this address.",
+          updated: "Last updated: July 31, 2026"
+        },
+        ru: {
+          pageTitle: "Политика конфиденциальности – GehaltKlar",
+          metaDescription: "Политика конфиденциальности мобильного приложения GehaltKlar.",
+          languageLabel: "Язык",
+          heading: "Политика конфиденциальности",
+          appLabel: "Приложение:",
+          summary: "GehaltKlar обрабатывает данные о заработной плате исключительно локально на устройстве. Приложение не использует учётные записи, рекламу, аналитические сервисы или сервисы отслеживания и не передаёт нам данные, введённые в приложении.",
+          controllerTitle: "1. Ответственное лицо и контактные данные",
+          controllerText: "Ответственным за GehaltKlar является Pham Tung Lam.",
+          contactLabel: "Контакт:",
+          processingTitle: "2. Обработка данных в приложении",
+          processingText: "Введённые пользователями данные обрабатываются исключительно на соответствующем устройстве для расчёта предварительной оценки чистой заработной платы. Эти данные не передаются на сервер разработчика.",
+          localDataTitle: "3. Локальные данные и справочные значения",
+          localDataText: "Справочные значения, используемые для расчётов, поставляются вместе с приложением и считываются локально на устройстве. GehaltKlar не поддерживает облачную синхронизацию и не загружает расчётные данные во время работы из собственного серверного сервиса.",
+          thirdPartiesTitle: "4. Реклама, аналитика и сторонние SDK",
+          thirdPartiesText: "GehaltKlar не содержит рекламы и не использует SDK для аналитики, отслеживания или рекламы. Распространение и установка через Google Play или Apple App Store независимо от этого могут повлечь обработку данных компанией Google или Apple соответственно. При этом применяется политика конфиденциальности соответствующего оператора платформы.",
+          supportTitle: "5. Обращения в службу поддержки",
+          supportText: "Если вы добровольно свяжетесь с нами по электронной почте, мы будем обрабатывать ваш адрес электронной почты и переданное вами содержание исключительно для ответа на обращение. Сообщение будет удалено, когда оно больше не потребуется для этой цели, если законодательство не обязывает хранить его дольше.",
+          minorsTitle: "6. Несовершеннолетние",
+          minorsText: "GehaltKlar подходит для широкой аудитории и не предназначен специально для детей. Приложение сознательно не собирает персональные данные несовершеннолетних.",
+          rightsTitle: "7. Ваши права",
+          rightsText: "Если мы обрабатываем персональные данные в связи с обращением в службу поддержки, вы можете запросить доступ к данным, их исправление, удаление или ограничение обработки, а также возразить против обработки. Для этого используйте указанный выше контактный адрес. Вы также можете подать жалобу в компетентный надзорный орган по защите данных.",
+          changesTitle: "8. Изменения настоящей Политики конфиденциальности",
+          changesText: "Мы обновляем настоящую Политику конфиденциальности при изменении функций приложения или требований законодательства. Актуальная версия публикуется по этому адресу.",
+          updated: "Последнее обновление: 31 июля 2026 г."
+        },
+        uk: {
+          pageTitle: "Політика конфіденційності – GehaltKlar",
+          metaDescription: "Політика конфіденційності мобільного застосунку GehaltKlar.",
+          languageLabel: "Мова",
+          heading: "Політика конфіденційності",
+          appLabel: "Застосунок:",
+          summary: "GehaltKlar обробляє дані про заробітну плату виключно локально на пристрої. Застосунок не використовує облікові записи, рекламу, аналітичні сервіси чи сервіси відстеження та не передає нам дані, введені в застосунку.",
+          controllerTitle: "1. Відповідальна особа та контактні дані",
+          controllerText: "Відповідальним за GehaltKlar є Pham Tung Lam.",
+          contactLabel: "Контакт:",
+          processingTitle: "2. Обробка даних у застосунку",
+          processingText: "Введені користувачами дані обробляються виключно на відповідному пристрої для розрахунку орієнтовної суми заробітної плати після відрахувань. Ці дані не передаються на сервер розробника.",
+          localDataTitle: "3. Локальні дані та довідкові значення",
+          localDataText: "Довідкові значення, що використовуються для розрахунків, постачаються разом із застосунком і зчитуються локально на пристрої. GehaltKlar не підтримує хмарну синхронізацію та не завантажує розрахункові дані під час роботи з власного серверного сервісу.",
+          thirdPartiesTitle: "4. Реклама, аналітика та сторонні SDK",
+          thirdPartiesText: "GehaltKlar не містить реклами та не використовує SDK для аналітики, відстеження чи реклами. Розповсюдження та встановлення через Google Play або Apple App Store незалежно від цього можуть призвести до обробки даних компанією Google або Apple відповідно. При цьому застосовується політика конфіденційності відповідного оператора платформи.",
+          supportTitle: "5. Звернення до служби підтримки",
+          supportText: "Якщо ви добровільно зв'яжетеся з нами електронною поштою, ми оброблятимемо вашу адресу електронної пошти та наданий вами вміст виключно для опрацювання звернення. Повідомлення буде видалено, щойно воно більше не буде потрібне для цієї мети, якщо законодавство не вимагає зберігати його довше.",
+          minorsTitle: "6. Неповнолітні",
+          minorsText: "GehaltKlar підходить для широкої аудиторії та не призначений спеціально для дітей. Застосунок свідомо не збирає персональні дані неповнолітніх.",
+          rightsTitle: "7. Ваші права",
+          rightsText: "Якщо ми обробляємо персональні дані у зв'язку зі зверненням до служби підтримки, ви можете вимагати доступу до даних, їх виправлення, видалення чи обмеження обробки, а також заперечити проти обробки. Для цього скористайтеся вказаною вище контактною адресою. Ви також можете подати скаргу до компетентного наглядового органу із захисту даних.",
+          changesTitle: "8. Зміни до цієї Політики конфіденційності",
+          changesText: "Ми оновлюємо цю Політику конфіденційності, коли змінюються функції застосунку або вимоги законодавства. Актуальна версія є загальнодоступною за цією адресою.",
+          updated: "Останнє оновлення: 31 липня 2026 р."
+        },
+        vi: {
+          pageTitle: "Chính sách quyền riêng tư – GehaltKlar",
+          metaDescription: "Chính sách quyền riêng tư dành cho ứng dụng di động GehaltKlar.",
+          languageLabel: "Ngôn ngữ",
+          heading: "Chính sách quyền riêng tư",
+          appLabel: "Ứng dụng:",
+          summary: "GehaltKlar chỉ xử lý thông tin tiền lương cục bộ trên thiết bị. Ứng dụng không sử dụng tài khoản người dùng, quảng cáo, dịch vụ phân tích hoặc theo dõi và không truyền cho chúng tôi bất kỳ dữ liệu nào được nhập trong ứng dụng.",
+          controllerTitle: "1. Bên chịu trách nhiệm và thông tin liên hệ",
+          controllerText: "Người chịu trách nhiệm về GehaltKlar là Pham Tung Lam.",
+          contactLabel: "Liên hệ:",
+          processingTitle: "2. Xử lý dữ liệu trong ứng dụng",
+          processingText: "Thông tin do người dùng nhập chỉ được xử lý trên chính thiết bị đó để tính toán số tiền lương ròng ước tính, không mang tính ràng buộc. Thông tin này không được truyền đến máy chủ của nhà phát triển.",
+          localDataTitle: "3. Dữ liệu cục bộ và giá trị tham chiếu",
+          localDataText: "Các giá trị tham chiếu dùng để tính toán được cung cấp cùng ứng dụng và được đọc cục bộ trên thiết bị. GehaltKlar không cung cấp tính năng đồng bộ hóa đám mây và không tải dữ liệu tính toán từ hệ thống máy chủ riêng trong thời gian chạy.",
+          thirdPartiesTitle: "4. Quảng cáo, phân tích và SDK của bên thứ ba",
+          thirdPartiesText: "GehaltKlar không chứa quảng cáo và không sử dụng SDK phân tích, theo dõi hoặc quảng cáo. Việc phân phối và cài đặt qua Google Play hoặc Apple App Store có thể độc lập dẫn đến việc Google hoặc Apple tương ứng xử lý dữ liệu. Chính sách quyền riêng tư của nhà vận hành nền tảng tương ứng được áp dụng.",
+          supportTitle: "5. Yêu cầu hỗ trợ",
+          supportText: "Nếu bạn tự nguyện liên hệ với chúng tôi qua email, chúng tôi chỉ xử lý địa chỉ email và nội dung bạn cung cấp để giải quyết yêu cầu của bạn. Thư sẽ được xóa ngay khi không còn cần thiết cho mục đích này, trừ khi pháp luật quy định nghĩa vụ lưu giữ lâu hơn.",
+          minorsTitle: "6. Người chưa thành niên",
+          minorsText: "GehaltKlar phù hợp với đối tượng người dùng nói chung và không hướng riêng đến trẻ em. Ứng dụng không chủ ý thu thập dữ liệu cá nhân của người chưa thành niên.",
+          rightsTitle: "7. Quyền của bạn",
+          rightsText: "Trong phạm vi chúng tôi xử lý dữ liệu cá nhân liên quan đến yêu cầu hỗ trợ, bạn có thể yêu cầu quyền truy cập, chỉnh sửa, xóa hoặc hạn chế xử lý và có thể phản đối việc xử lý. Vui lòng sử dụng địa chỉ liên hệ nêu trên. Bạn cũng có thể khiếu nại với cơ quan giám sát bảo vệ dữ liệu có thẩm quyền.",
+          changesTitle: "8. Thay đổi đối với Chính sách quyền riêng tư này",
+          changesText: "Chúng tôi cập nhật Chính sách quyền riêng tư này khi chức năng của ứng dụng hoặc yêu cầu pháp lý thay đổi. Phiên bản hiện hành được công khai tại địa chỉ này.",
+          updated: "Cập nhật lần cuối: ngày 31 tháng 7 năm 2026"
+        }
+      };
+
+      const metaDescription = document.querySelector('meta[name="description"]');
+      const languageButtons = document.querySelectorAll("[data-language]");
+
+      function normalizedLanguage(value) {
+        const language = String(value || "").trim().toLowerCase().split("-")[0];
+        return SUPPORTED_LANGUAGES.includes(language) ? language : null;
+      }
+
+      function initialLanguage() {
+        const queryLanguage = normalizedLanguage(new URLSearchParams(window.location.search).get("lang"));
+        if (queryLanguage) {
+          return queryLanguage;
+        }
+
+        for (const browserLanguage of navigator.languages || [navigator.language]) {
+          const language = normalizedLanguage(browserLanguage);
+          if (language) {
+            return language;
+          }
+        }
+
+        return DEFAULT_LANGUAGE;
+      }
+
+      function applyLanguage(language, updateUrl = false) {
+        const activeLanguage = normalizedLanguage(language) || DEFAULT_LANGUAGE;
+        const copy = translations[activeLanguage];
+
+        document.documentElement.lang = activeLanguage;
+        document.title = copy.pageTitle;
+        metaDescription.content = copy.metaDescription;
+
+        document.querySelectorAll("[data-i18n]").forEach((element) => {
+          const key = element.dataset.i18n;
+          if (Object.hasOwn(copy, key)) {
+            element.textContent = copy[key];
+          }
+        });
+
+        languageButtons.forEach((button) => {
+          button.setAttribute("aria-pressed", String(button.dataset.language === activeLanguage));
+        });
+
+        if (updateUrl) {
+          const url = new URL(window.location.href);
+          url.searchParams.set("lang", activeLanguage);
+          window.history.pushState({ language: activeLanguage }, "", url);
+        }
+      }
+
+      languageButtons.forEach((button) => {
+        button.addEventListener("click", () => applyLanguage(button.dataset.language, true));
+      });
+
+      window.addEventListener("popstate", () => applyLanguage(initialLanguage()));
+      applyLanguage(initialLanguage());
+    })();
+  </script>
 </body>
 </html>
