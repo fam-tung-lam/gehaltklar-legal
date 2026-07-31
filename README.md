@@ -17,5 +17,7 @@ Use the `lang` query parameter to open the page in a specific language:
 - `?lang=vi` — Vietnamese
 
 Without the query parameter, the page uses a supported browser language and
-falls back to German. The language switcher updates the content and URL without
+falls back to German. Regional browser language tags such as `ru-RU`, `uk-UA`,
+and `vi-VN` resolve to their supported base language. The sticky language
+switcher remains visible while scrolling and updates the content and URL without
 reloading the page.

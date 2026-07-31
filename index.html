@@ -59,11 +59,22 @@
     }
 
     .language-switcher {
+      position: sticky;
+      top: 12px;
+      z-index: 10;
       display: flex;
       flex-wrap: wrap;
       align-items: center;
       gap: 10px;
-      margin-bottom: 32px;
+      box-sizing: border-box;
+      max-width: 100%;
+      margin: -12px -12px 32px;
+      padding: 12px;
+      border: 1px solid rgba(203, 213, 225, 0.85);
+      border-radius: 12px;
+      background: rgba(255, 255, 255, 0.92);
+      box-shadow: 0 8px 24px rgba(15, 23, 42, 0.08);
+      backdrop-filter: blur(12px);
     }
 
     .language-switcher__label {
@@ -139,6 +150,12 @@
         border-radius: 0;
         box-shadow: none;
       }
+
+      .language-switcher {
+        top: 8px;
+        margin: -8px -8px 24px;
+        padding: 8px;
+      }
     }
 
     @media (prefers-color-scheme: dark) {
@@ -159,6 +176,12 @@
 
       .language-switcher__label {
         color: #cbd5e1;
+      }
+
+      .language-switcher {
+        border-color: rgba(71, 85, 105, 0.9);
+        background: rgba(15, 23, 42, 0.92);
+        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.24);
       }
 
       .language-button {
@@ -284,12 +307,16 @@
     <footer data-i18n="updated">Stand: 31. Juli 2026</footer>
   </main>
 
-  <script>
+  <script type="module">
+    import {
+      DEFAULT_LANGUAGE,
+      normalizedLanguage,
+      resolveInitialLanguage
+    } from "./language-selection.js";
+
     (() => {
       "use strict";
 
-      const DEFAULT_LANGUAGE = "de";
-      const SUPPORTED_LANGUAGES = ["de", "en", "ru", "uk", "vi"];
       const translations = {
         de: {
           pageTitle: "Datenschutzerklärung – GehaltKlar",
@@ -426,25 +453,12 @@
       const metaDescription = document.querySelector('meta[name="description"]');
       const languageButtons = document.querySelectorAll("[data-language]");
 
-      function normalizedLanguage(value) {
-        const language = String(value || "").trim().toLowerCase().split("-")[0];
-        return SUPPORTED_LANGUAGES.includes(language) ? language : null;
-      }
-
       function initialLanguage() {
-        const queryLanguage = normalizedLanguage(new URLSearchParams(window.location.search).get("lang"));
-        if (queryLanguage) {
-          return queryLanguage;
-        }
-
-        for (const browserLanguage of navigator.languages || [navigator.language]) {
-          const language = normalizedLanguage(browserLanguage);
-          if (language) {
-            return language;
-          }
-        }
-
-        return DEFAULT_LANGUAGE;
+        return resolveInitialLanguage({
+          search: window.location.search,
+          browserLanguages: navigator.languages,
+          browserLanguage: navigator.language
+        });
       }
 
       function applyLanguage(language, updateUrl = false) {
