@@ -52,4 +52,9 @@ test("the page keeps a flagged language dropdown available", async () => {
   assert.match(page, /🇺🇦 Українська/);
   assert.match(page, /🇻🇳 Tiếng Việt/);
   assert.match(page, /position: sticky;/);
+  assert.match(page, /id="theme-button"/);
+  assert.match(page, /aria-label="Helles oder dunkles Design umschalten"/);
+  assert.match(page, /gk_legal_theme/);
+  assert.match(page, /data-i18n="notCollectedTitle"/);
+  assert.doesNotMatch(page, /fonts\.googleapis\.com|googletagmanager\.com/);
 });

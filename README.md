@@ -27,5 +27,8 @@ reloading the page.
 The page follows the GehaltKlar Design System: indigo and slate surfaces, a
 reserved gold accent, 4px-based spacing, 16px cards, and 48px controls. The
 language control is a sticky native dropdown with flagged, native language
-names. It uses local CSS and system font fallbacks only, so the legal page does
-not introduce third-party runtime assets.
+names. A neighboring theme control follows the browser or device preference on
+first use and lets visitors persist a light or dark choice locally. The policy
+uses a short privacy promise, scan-friendly sections, and an explicit list of
+data the app does not collect. It uses local CSS and system font fallbacks only,
+so the legal page does not introduce third-party runtime assets.
