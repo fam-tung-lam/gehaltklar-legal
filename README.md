@@ -26,10 +26,9 @@ without reloading the page.
 
 The page follows the GehaltKlar Design System: indigo and slate surfaces, a
 reserved gold accent, 4px-based spacing, and 16px cards. A full-width sticky app
-bar keeps the GehaltKlar wordmark, flagged native language dropdown, and theme
+bar keeps the GehaltKlar wordmark, native language dropdown, and theme
 control together and visible while scrolling. The theme follows the browser or
 device preference on first use and lets visitors persist a light or dark choice
-locally. The policy uses a short privacy promise, scan-friendly sections, and an
-explicit list of data the app does not collect. It uses local CSS and system
-font fallbacks only, so the legal page does not introduce third-party runtime
-assets.
+locally. The policy uses scan-friendly sections and an explicit list of data the
+app does not collect. It uses local CSS and system font fallbacks only, so the
+legal page does not introduce third-party runtime assets.

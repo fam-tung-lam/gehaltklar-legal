@@ -52,9 +52,6 @@
       --text-accent: var(--gk-amber-700);
       --border-default: var(--gk-ink-150);
       --border-focus: var(--gk-indigo-500);
-      --success-fg: #1b7a4b;
-      --success-bg: #e6f4ec;
-      --success-border: #b9e0cb;
       --danger-fg: #ba3a2e;
       --focus-ring: 0 0 0 2px var(--surface-card), 0 0 0 4px var(--gk-indigo-500);
       --font-display: "Schibsted Grotesk", system-ui, sans-serif;
@@ -86,9 +83,6 @@
       --text-accent: #e4b45c;
       --border-default: #252c36;
       --border-focus: var(--gk-indigo-300);
-      --success-fg: #5cc08a;
-      --success-bg: #122a1d;
-      --success-border: #1e4630;
       --danger-fg: #e6796c;
       --focus-ring: 0 0 0 2px var(--surface-card), 0 0 0 4px var(--gk-indigo-300);
     }
@@ -165,8 +159,7 @@
       color: var(--gk-amber-500);
     }
 
-    .legal-overline,
-    .summary-label {
+    .legal-overline {
       margin: 0 0 8px;
       color: var(--text-accent);
       font-size: 11px;
@@ -325,41 +318,11 @@
       display: block;
     }
 
-    .privacy-summary,
     .legal-document {
       padding: 24px;
       border: 1px solid var(--border-default);
       border-radius: var(--radius-lg);
       background: var(--surface-card);
-    }
-
-    .privacy-summary {
-      display: flex;
-      gap: 14px;
-      border-color: var(--success-border);
-      background: var(--success-bg);
-    }
-
-    .privacy-summary__icon {
-      flex: 0 0 auto;
-      width: 22px;
-      height: 22px;
-      margin-top: 1px;
-      color: var(--success-fg);
-    }
-
-    .privacy-summary__content {
-      min-width: 0;
-    }
-
-    .summary-label {
-      color: var(--success-fg);
-    }
-
-    .summary {
-      color: var(--text-primary);
-      font-size: 16px;
-      line-height: 24px;
     }
 
     .legal-document {
@@ -479,8 +442,7 @@
         padding-bottom: 32px;
       }
 
-      .legal-hero,
-      .privacy-summary {
+      .legal-hero {
         padding: 20px;
       }
 
@@ -512,9 +474,6 @@
         --text-accent: #e4b45c;
         --border-default: #252c36;
         --border-focus: var(--gk-indigo-300);
-        --success-fg: #5cc08a;
-        --success-bg: #122a1d;
-        --success-border: #1e4630;
         --danger-fg: #e6796c;
         --focus-ring: 0 0 0 2px var(--surface-card), 0 0 0 4px var(--gk-indigo-300);
       }
@@ -540,11 +499,11 @@
             <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path>
           </svg>
           <select id="language-select" aria-label="Sprache" data-i18n-aria-label="languageLabel">
-            <option value="de">🇩🇪 Deutsch</option>
-            <option value="en">🇬🇧 English</option>
-            <option value="ru">🇷🇺 Русский</option>
-            <option value="uk">🇺🇦 Українська</option>
-            <option value="vi">🇻🇳 Tiếng Việt</option>
+            <option value="de">Deutsch</option>
+            <option value="en">English</option>
+            <option value="ru">Русский</option>
+            <option value="uk">Українська</option>
+            <option value="vi">Tiếng Việt</option>
           </select>
           <span class="language-select__chevron" aria-hidden="true"></span>
         </div>
@@ -573,19 +532,6 @@
         <strong data-i18n="effectiveDate">31. Juli 2026</strong>
       </p>
     </header>
-
-    <section class="privacy-summary" aria-labelledby="summary-label">
-      <svg class="privacy-summary__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-        <path d="m9 12 2 2 4-4"></path>
-        <circle cx="12" cy="12" r="9"></circle>
-      </svg>
-      <div class="privacy-summary__content">
-        <p id="summary-label" class="summary-label" data-i18n="summaryLabel">Kurz gesagt</p>
-        <p class="summary" data-i18n="summary">
-          GehaltKlar erhebt in der App keine personenbezogenen Daten. Alles läuft offline auf deinem Gerät, und deine Gehaltsangaben verlassen es nie.
-        </p>
-      </div>
-    </section>
 
     <article class="legal-document">
       <section class="legal-section">
@@ -696,14 +642,12 @@
           metaDescription: "Datenschutzerklärung für die mobile Anwendung GehaltKlar.",
           languageLabel: "Sprache",
           legalOverline: "Rechtliches",
-          summaryLabel: "Kurz gesagt",
           heading: "Datenschutzerklärung",
           tagline: "Wie GehaltKlar mit deinen Daten umgeht — kurz gesagt: Die App selbst erhebt keine.",
           effectiveLabel: "Gültig ab",
           effectiveDate: "31. Juli 2026",
           themeLabel: "Helles oder dunkles Design umschalten",
           appLabel: "App:",
-          summary: "GehaltKlar erhebt in der App keine personenbezogenen Daten. Alles läuft offline auf deinem Gerät, und deine Gehaltsangaben verlassen es nie.",
           overviewTitle: "Überblick",
           overviewText: "GehaltKlar ist eine mobile App für nachvollziehbare Schätzungen des monatlichen Nettogehalts in Deutschland. Die Berechnung läuft vollständig offline auf deinem Gerät. Die App hat keine Benutzerkonten, kein eigenes Backend, keine Analyse und keine Werbung.",
           controllerTitle: "Verantwortlicher und Kontakt",
@@ -740,14 +684,12 @@
           metaDescription: "Privacy policy for the GehaltKlar mobile application.",
           languageLabel: "Language",
           legalOverline: "Legal information",
-          summaryLabel: "In short",
           heading: "Privacy Policy",
           tagline: "How GehaltKlar handles your data — in short: the app itself does not collect any.",
           effectiveLabel: "Effective date",
           effectiveDate: "July 31, 2026",
           themeLabel: "Toggle light or dark theme",
           appLabel: "App:",
-          summary: "GehaltKlar does not collect personal data in the app. Everything runs offline on your device, and the salary information you enter never leaves it.",
           overviewTitle: "Overview",
           overviewText: "GehaltKlar is a mobile app that provides explainable estimates of monthly net salary in Germany. Calculations run entirely offline on your device. The app has no user accounts, no developer backend, no analytics, and no advertising.",
           controllerTitle: "Controller and contact",
@@ -784,14 +726,12 @@
           metaDescription: "Политика конфиденциальности мобильного приложения GehaltKlar.",
           languageLabel: "Язык",
           legalOverline: "Правовая информация",
-          summaryLabel: "Кратко",
           heading: "Политика конфиденциальности",
           tagline: "Как GehaltKlar обращается с вашими данными — коротко: само приложение их не собирает.",
           effectiveLabel: "Действует с",
           effectiveDate: "31 июля 2026 г.",
           themeLabel: "Переключить светлую или тёмную тему",
           appLabel: "Приложение:",
-          summary: "GehaltKlar не собирает персональные данные в приложении. Всё работает офлайн на вашем устройстве, а введённые данные о зарплате никогда его не покидают.",
           overviewTitle: "Обзор",
           overviewText: "GehaltKlar — мобильное приложение для понятной оценки ежемесячной чистой зарплаты в Германии. Расчёты выполняются полностью офлайн на вашем устройстве. В приложении нет учётных записей, собственного серверного сервиса, аналитики и рекламы.",
           controllerTitle: "Ответственное лицо и контактные данные",
@@ -828,14 +768,12 @@
           metaDescription: "Політика конфіденційності мобільного застосунку GehaltKlar.",
           languageLabel: "Мова",
           legalOverline: "Правова інформація",
-          summaryLabel: "Коротко",
           heading: "Політика конфіденційності",
           tagline: "Як GehaltKlar поводиться з вашими даними — коротко: сам застосунок їх не збирає.",
           effectiveLabel: "Чинна від",
           effectiveDate: "31 липня 2026 р.",
           themeLabel: "Перемкнути світлу або темну тему",
           appLabel: "Застосунок:",
-          summary: "GehaltKlar не збирає персональних даних у застосунку. Усе працює офлайн на вашому пристрої, а введені дані про зарплату ніколи його не залишають.",
           overviewTitle: "Огляд",
           overviewText: "GehaltKlar — мобільний застосунок для зрозумілої оцінки місячної зарплати після відрахувань у Німеччині. Розрахунки повністю виконуються офлайн на вашому пристрої. У застосунку немає облікових записів, власного серверного сервісу, аналітики та реклами.",
           controllerTitle: "Відповідальна особа та контактні дані",
@@ -872,14 +810,12 @@
           metaDescription: "Chính sách quyền riêng tư dành cho ứng dụng di động GehaltKlar.",
           languageLabel: "Ngôn ngữ",
           legalOverline: "Thông tin pháp lý",
-          summaryLabel: "Tóm tắt",
           heading: "Chính sách quyền riêng tư",
           tagline: "GehaltKlar xử lý dữ liệu của bạn thế nào — nói ngắn gọn: bản thân ứng dụng không thu thập dữ liệu.",
           effectiveLabel: "Có hiệu lực từ",
           effectiveDate: "ngày 31 tháng 7 năm 2026",
           themeLabel: "Chuyển đổi giao diện sáng hoặc tối",
           appLabel: "Ứng dụng:",
-          summary: "GehaltKlar không thu thập dữ liệu cá nhân trong ứng dụng. Mọi thứ chạy ngoại tuyến trên thiết bị và thông tin tiền lương bạn nhập không bao giờ rời khỏi thiết bị.",
           overviewTitle: "Tổng quan",
           overviewText: "GehaltKlar là ứng dụng di động đưa ra ước tính dễ hiểu về lương ròng hằng tháng tại Đức. Việc tính toán diễn ra hoàn toàn ngoại tuyến trên thiết bị. Ứng dụng không có tài khoản người dùng, hệ thống máy chủ riêng, phân tích hay quảng cáo.",
           controllerTitle: "Bên chịu trách nhiệm và thông tin liên hệ",
