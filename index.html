@@ -17,292 +17,458 @@
   <link rel="alternate" hreflang="x-default" href="?lang=de">
   <style>
     :root {
-      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      color: #1f2937;
-      background: #f8fafc;
+      --gk-indigo-950: #102a54;
+      --gk-indigo-900: #173b76;
+      --gk-indigo-700: #255cb8;
+      --gk-indigo-600: #2f6fd6;
+      --gk-indigo-500: #3e8ef0;
+      --gk-indigo-300: #8fbcf7;
+      --gk-indigo-200: #bedcf9;
+      --gk-indigo-50: #eff5fe;
+      --gk-slate-900: #2a3340;
+      --gk-amber-700: #8a5e09;
+      --gk-amber-500: #e0a93f;
+      --gk-amber-200: #f3dfaf;
+      --gk-amber-50: #fcf7e9;
+      --gk-ink-900: #1b2129;
+      --gk-ink-700: #37414d;
+      --gk-ink-600: #546070;
+      --gk-ink-500: #6b7787;
+      --gk-ink-400: #828e9e;
+      --gk-ink-150: #dcdfe5;
+      --gk-ink-100: #e7e9ed;
+      --gk-ink-50: #f4f5f7;
+      --gk-white: #ffffff;
+      --surface-page: var(--gk-ink-50);
+      --surface-card: var(--gk-white);
+      --surface-brand: var(--gk-slate-900);
+      --surface-brand-subtle: var(--gk-indigo-50);
+      --text-primary: var(--gk-ink-900);
+      --text-secondary: var(--gk-ink-600);
+      --text-tertiary: var(--gk-ink-500);
+      --text-brand: var(--gk-indigo-700);
+      --text-on-brand: #eaf0f7;
+      --text-on-brand-muted: #aab6c4;
+      --text-accent: var(--gk-amber-700);
+      --border-default: var(--gk-ink-150);
+      --border-focus: var(--gk-indigo-500);
+      --focus-ring: 0 0 0 2px var(--surface-card), 0 0 0 4px var(--gk-indigo-500);
+      --font-display: "Schibsted Grotesk", system-ui, sans-serif;
+      --font-body: "IBM Plex Sans", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      --font-mono: "IBM Plex Mono", ui-monospace, monospace;
+      --radius-sm: 8px;
+      --radius-md: 12px;
+      --radius-lg: 16px;
+      --radius-xl: 20px;
+      --radius-pill: 999px;
+      --page-margin: 20px;
+      --control-h: 48px;
+      --elevation-1: 0 1px 2px rgba(16, 24, 21, 0.06);
+      color: var(--text-primary);
+      background: var(--surface-page);
+      font-family: var(--font-body);
+    }
+
+    html[data-theme="dark"] {
+      --surface-page: #0f1319;
+      --surface-card: #171c24;
+      --surface-brand: #161c26;
+      --surface-brand-subtle: #182636;
+      --text-primary: #e7eaef;
+      --text-secondary: #9ea8b6;
+      --text-tertiary: #6f7a88;
+      --text-brand: var(--gk-indigo-300);
+      --text-on-brand: #eaf0f7;
+      --text-on-brand-muted: #9daab8;
+      --text-accent: #e4b45c;
+      --border-default: #252c36;
+      --border-focus: var(--gk-indigo-300);
+      --focus-ring: 0 0 0 2px var(--surface-card), 0 0 0 4px var(--gk-indigo-300);
+    }
+
+    * {
+      box-sizing: border-box;
     }
 
     body {
       margin: 0;
-      padding: 24px;
+      padding: 32px var(--page-margin) 48px;
+      background: var(--surface-page);
+      overflow-x: hidden;
     }
 
     main {
-      max-width: 760px;
+      display: grid;
+      gap: 24px;
+      width: 100%;
+      max-width: 720px;
+      min-width: 0;
       margin: 0 auto;
-      padding: 40px;
-      background: #ffffff;
-      border: 1px solid #e5e7eb;
-      border-radius: 16px;
-      box-shadow: 0 8px 30px rgba(15, 23, 42, 0.06);
+    }
+
+    main > * {
+      min-width: 0;
+      max-width: 100%;
+    }
+
+    .legal-hero {
+      padding: 28px;
+      border-radius: var(--radius-xl);
+      color: var(--text-on-brand);
+      background: var(--surface-brand);
+    }
+
+    .wordmark {
+      margin: 0 0 32px;
+      color: var(--text-on-brand);
+      font-family: var(--font-display);
+      font-size: 22px;
+      font-weight: 700;
+      letter-spacing: -0.7px;
+      line-height: 1;
+    }
+
+    .wordmark span {
+      color: var(--gk-amber-500);
+    }
+
+    .legal-overline,
+    .summary-label {
+      margin: 0 0 8px;
+      color: var(--text-accent);
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.8px;
+      line-height: 14px;
+      text-transform: uppercase;
     }
 
     h1,
-    h2 {
-      line-height: 1.2;
-      color: #0f172a;
+    h2,
+    p {
+      margin: 0;
     }
 
     h1 {
-      margin-top: 0;
-      font-size: clamp(2rem, 6vw, 3rem);
+      max-width: 560px;
+      font-family: var(--font-display);
+      font-size: clamp(32px, 7vw, 40px);
+      font-weight: 700;
+      letter-spacing: -0.5px;
+      line-height: 1.15;
     }
 
-    h2 {
-      margin-top: 2rem;
-      font-size: 1.2rem;
-    }
-
-    p,
-    li {
-      line-height: 1.7;
+    .app-meta {
+      margin-top: 16px;
+      color: var(--text-on-brand-muted);
+      font-size: 14px;
+      font-weight: 500;
+      line-height: 20px;
     }
 
     .language-switcher {
       position: sticky;
       top: 12px;
       z-index: 10;
-      display: flex;
-      flex-wrap: wrap;
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(190px, 250px);
       align-items: center;
-      gap: 10px;
-      box-sizing: border-box;
-      max-width: 100%;
-      margin: -12px -12px 32px;
-      padding: 12px;
-      border: 1px solid rgba(203, 213, 225, 0.85);
-      border-radius: 12px;
-      background: rgba(255, 255, 255, 0.92);
-      box-shadow: 0 8px 24px rgba(15, 23, 42, 0.08);
-      backdrop-filter: blur(12px);
+      gap: 16px;
+      padding: 16px;
+      border: 1px solid var(--border-default);
+      border-radius: var(--radius-lg);
+      background: var(--surface-card);
+      box-shadow: var(--elevation-1);
     }
 
     .language-switcher__label {
-      color: #475569;
-      font-size: 0.9rem;
-      font-weight: 650;
+      color: var(--text-primary);
+      font-size: 14px;
+      font-weight: 600;
+      line-height: 20px;
     }
 
-    .language-switcher__options {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 6px;
+    .language-select {
+      position: relative;
       min-width: 0;
     }
 
-    .language-button {
-      min-width: 44px;
-      min-height: 38px;
-      padding: 7px 10px;
-      border: 1px solid #cbd5e1;
-      border-radius: 9px;
-      color: #334155;
-      background: #ffffff;
+    .language-select select {
+      width: 100%;
+      min-height: var(--control-h);
+      padding: 0 42px 0 14px;
+      border: 1px solid var(--border-default);
+      border-radius: var(--radius-md);
+      appearance: none;
+      color: var(--text-primary);
+      background: var(--surface-card);
       font: inherit;
-      font-size: 0.9rem;
-      font-weight: 700;
+      font-size: 16px;
+      line-height: 24px;
       cursor: pointer;
     }
 
-    .language-button:hover {
-      border-color: #2563eb;
-      color: #1d4ed8;
+    .language-select select:hover {
+      border-color: var(--gk-indigo-700);
     }
 
-    .language-button:focus-visible {
-      outline: 3px solid rgba(37, 99, 235, 0.35);
-      outline-offset: 2px;
+    .language-select select:focus-visible {
+      border-color: var(--border-focus);
+      outline: none;
+      box-shadow: var(--focus-ring);
     }
 
-    .language-button[aria-pressed="true"] {
-      border-color: #2563eb;
-      color: #ffffff;
-      background: #2563eb;
+    .language-select__chevron {
+      position: absolute;
+      top: 50%;
+      right: 18px;
+      width: 9px;
+      height: 9px;
+      border-right: 2px solid var(--text-tertiary);
+      border-bottom: 2px solid var(--text-tertiary);
+      pointer-events: none;
+      transform: translateY(-70%) rotate(45deg);
+    }
+
+    .privacy-summary,
+    .legal-document {
+      padding: 24px;
+      border: 1px solid var(--border-default);
+      border-radius: var(--radius-lg);
+      background: var(--surface-card);
+    }
+
+    .privacy-summary {
+      border-color: var(--gk-amber-200);
+      background: var(--gk-amber-50);
     }
 
     .summary {
-      padding: 18px 20px;
-      border-left: 4px solid #2563eb;
-      border-radius: 8px;
-      background: #eff6ff;
+      color: var(--text-primary);
+      font-size: 16px;
+      line-height: 24px;
+    }
+
+    .legal-document {
+      padding-block: 4px;
+    }
+
+    .legal-section {
+      padding: 24px;
+    }
+
+    .legal-section + .legal-section {
+      border-top: 1px solid var(--border-default);
+    }
+
+    h2 {
+      margin-bottom: 8px;
+      color: var(--text-primary);
+      font-family: var(--font-display);
+      font-size: 20px;
+      font-weight: 600;
+      letter-spacing: -0.15px;
+      line-height: 26px;
+    }
+
+    .legal-section p {
+      color: var(--text-secondary);
+      font-size: 16px;
+      line-height: 24px;
     }
 
     a {
-      color: #1d4ed8;
+      color: var(--text-brand);
+      font-weight: 600;
+      text-decoration-thickness: 1px;
+      text-underline-offset: 3px;
+    }
+
+    a:focus-visible {
+      border-radius: 2px;
+      outline: none;
+      box-shadow: var(--focus-ring);
     }
 
     footer {
-      margin-top: 40px;
-      padding-top: 20px;
-      border-top: 1px solid #e5e7eb;
-      color: #64748b;
-      font-size: 0.9rem;
+      color: var(--text-tertiary);
+      font-size: 12px;
+      font-weight: 500;
+      line-height: 16px;
+      text-align: center;
     }
 
     @media (max-width: 640px) {
       body {
-        padding: 0;
+        padding: 20px var(--page-margin) 32px;
       }
 
-      main {
-        padding: 24px;
-        border: 0;
-        border-radius: 0;
-        box-shadow: none;
+      .legal-hero,
+      .privacy-summary {
+        padding: 20px;
+      }
+
+      .wordmark {
+        margin-bottom: 24px;
       }
 
       .language-switcher {
         top: 8px;
-        margin: -8px -8px 24px;
-        padding: 8px;
+        grid-template-columns: 1fr;
+        gap: 8px;
+        padding: 12px;
+      }
+
+      .legal-section {
+        padding: 20px;
       }
     }
 
     @media (prefers-color-scheme: dark) {
-      :root {
-        color: #e2e8f0;
-        background: #020617;
+      html:not([data-theme="light"]) {
+        --surface-page: #0f1319;
+        --surface-card: #171c24;
+        --surface-brand: #161c26;
+        --surface-brand-subtle: #182636;
+        --text-primary: #e7eaef;
+        --text-secondary: #9ea8b6;
+        --text-tertiary: #6f7a88;
+        --text-brand: var(--gk-indigo-300);
+        --text-on-brand: #eaf0f7;
+        --text-on-brand-muted: #9daab8;
+        --text-accent: #e4b45c;
+        --border-default: #252c36;
+        --border-focus: var(--gk-indigo-300);
+        --focus-ring: 0 0 0 2px var(--surface-card), 0 0 0 4px var(--gk-indigo-300);
       }
 
-      main {
-        background: #0f172a;
-        border-color: #334155;
+      .privacy-summary {
+        border-color: #3f3517;
+        background: #26200e;
       }
+    }
 
-      h1,
-      h2 {
-        color: #f8fafc;
-      }
-
-      .language-switcher__label {
-        color: #cbd5e1;
-      }
-
-      .language-switcher {
-        border-color: rgba(71, 85, 105, 0.9);
-        background: rgba(15, 23, 42, 0.92);
-        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.24);
-      }
-
-      .language-button {
-        border-color: #475569;
-        color: #e2e8f0;
-        background: #1e293b;
-      }
-
-      .language-button:hover {
-        border-color: #60a5fa;
-        color: #bfdbfe;
-      }
-
-      .language-button[aria-pressed="true"] {
-        border-color: #60a5fa;
-        color: #0f172a;
-        background: #93c5fd;
-      }
-
-      .summary {
-        background: #172554;
-        border-left-color: #60a5fa;
-      }
-
-      a {
-        color: #93c5fd;
-      }
-
-      footer {
-        color: #94a3b8;
-        border-top-color: #334155;
+    @media (prefers-reduced-motion: reduce) {
+      * {
+        scroll-behavior: auto;
       }
     }
   </style>
 </head>
 <body>
   <main>
+    <header class="legal-hero">
+      <p class="wordmark">Gehalt<span>Klar</span></p>
+      <p class="legal-overline" data-i18n="legalOverline">Rechtliches</p>
+      <h1 data-i18n="heading">Datenschutzerklärung</h1>
+      <p class="app-meta"><strong data-i18n="appLabel">App:</strong> GehaltKlar</p>
+    </header>
+
     <nav class="language-switcher" aria-labelledby="language-label">
-      <span id="language-label" class="language-switcher__label" data-i18n="languageLabel">
+      <label id="language-label" class="language-switcher__label" for="language-select" data-i18n="languageLabel">
         Sprache
-      </span>
-      <div class="language-switcher__options" role="group">
-        <button class="language-button" type="button" data-language="de" aria-pressed="true">DE</button>
-        <button class="language-button" type="button" data-language="en" aria-pressed="false">EN</button>
-        <button class="language-button" type="button" data-language="ru" aria-pressed="false">RU</button>
-        <button class="language-button" type="button" data-language="uk" aria-pressed="false">UK</button>
-        <button class="language-button" type="button" data-language="vi" aria-pressed="false">VI</button>
+      </label>
+      <div class="language-select">
+        <select id="language-select">
+          <option value="de">🇩🇪 Deutsch</option>
+          <option value="en">🇬🇧 English</option>
+          <option value="ru">🇷🇺 Русский</option>
+          <option value="uk">🇺🇦 Українська</option>
+          <option value="vi">🇻🇳 Tiếng Việt</option>
+        </select>
+        <span class="language-select__chevron" aria-hidden="true"></span>
       </div>
     </nav>
 
-    <h1 data-i18n="heading">Datenschutzerklärung</h1>
-    <p><strong data-i18n="appLabel">App:</strong> GehaltKlar</p>
-
-    <p class="summary" data-i18n="summary">
+    <section class="privacy-summary" aria-labelledby="summary-label">
+      <p id="summary-label" class="summary-label" data-i18n="summaryLabel">Auf einen Blick</p>
+      <p class="summary" data-i18n="summary">
       GehaltKlar verarbeitet Gehaltsangaben ausschließlich lokal auf dem Gerät.
       Die App verwendet kein Benutzerkonto, keine Werbung, keine Analyse- oder
       Trackingdienste und übermittelt keine in der App eingegebenen Daten an uns.
-    </p>
+      </p>
+    </section>
 
-    <h2 data-i18n="controllerTitle">1. Verantwortlicher und Kontakt</h2>
-    <p>
+    <article class="legal-document">
+      <section class="legal-section">
+        <h2 data-i18n="controllerTitle">1. Verantwortlicher und Kontakt</h2>
+        <p>
       <span data-i18n="controllerText">Verantwortlich für GehaltKlar ist Pham Tung Lam.</span><br>
       <span data-i18n="contactLabel">Kontakt:</span>
       <a href="mailto:gehaltklar.support@gmail.com">gehaltklar.support@gmail.com</a>
-    </p>
+        </p>
+      </section>
 
-    <h2 data-i18n="processingTitle">2. Verarbeitung innerhalb der App</h2>
-    <p data-i18n="processingText">
+      <section class="legal-section">
+        <h2 data-i18n="processingTitle">2. Verarbeitung innerhalb der App</h2>
+        <p data-i18n="processingText">
       Die von Nutzerinnen und Nutzern eingegebenen Angaben werden ausschließlich
       auf dem jeweiligen Gerät verarbeitet, um eine unverbindliche Schätzung des
       Nettogehalts zu berechnen. Es findet keine Übertragung dieser Angaben an
       einen Server des Entwicklers statt.
-    </p>
+        </p>
+      </section>
 
-    <h2 data-i18n="localDataTitle">3. Lokale Daten und Referenzwerte</h2>
-    <p data-i18n="localDataText">
+      <section class="legal-section">
+        <h2 data-i18n="localDataTitle">3. Lokale Daten und Referenzwerte</h2>
+        <p data-i18n="localDataText">
       Für Berechnungen verwendete Referenzwerte werden mit der App ausgeliefert
       und lokal auf dem Gerät gelesen. GehaltKlar bietet keine Cloud-Synchronisierung
       und lädt keine Berechnungsdaten zur Laufzeit von einem eigenen Backend.
-    </p>
+        </p>
+      </section>
 
-    <h2 data-i18n="thirdPartiesTitle">4. Werbung, Analyse und Drittanbieter-SDKs</h2>
-    <p data-i18n="thirdPartiesText">
+      <section class="legal-section">
+        <h2 data-i18n="thirdPartiesTitle">4. Werbung, Analyse und Drittanbieter-SDKs</h2>
+        <p data-i18n="thirdPartiesText">
       GehaltKlar enthält keine Werbung und verwendet keine Analyse-, Tracking-
       oder Werbe-SDKs. Der Vertrieb und die Installation über Google Play oder
       den Apple App Store können unabhängig davon eine Datenverarbeitung durch
       Google beziehungsweise Apple auslösen. Dafür gelten die Datenschutzbestimmungen
       des jeweiligen Plattformbetreibers.
-    </p>
+        </p>
+      </section>
 
-    <h2 data-i18n="supportTitle">5. Supportanfragen</h2>
-    <p data-i18n="supportText">
+      <section class="legal-section">
+        <h2 data-i18n="supportTitle">5. Supportanfragen</h2>
+        <p data-i18n="supportText">
       Wenn Sie uns freiwillig per E-Mail kontaktieren, verarbeiten wir Ihre
       E-Mail-Adresse und die von Ihnen übermittelten Inhalte ausschließlich zur
       Bearbeitung Ihrer Anfrage. Die Nachricht wird gelöscht, sobald sie für
       diesen Zweck nicht mehr erforderlich ist, sofern keine gesetzlichen
       Aufbewahrungspflichten entgegenstehen.
-    </p>
+        </p>
+      </section>
 
-    <h2 data-i18n="minorsTitle">6. Minderjährige</h2>
-    <p data-i18n="minorsText">
+      <section class="legal-section">
+        <h2 data-i18n="minorsTitle">6. Minderjährige</h2>
+        <p data-i18n="minorsText">
       GehaltKlar ist für eine allgemeine Zielgruppe geeignet und nicht speziell
       an Kinder gerichtet. Die App erhebt wissentlich keine personenbezogenen
       Daten von Minderjährigen.
-    </p>
+        </p>
+      </section>
 
-    <h2 data-i18n="rightsTitle">7. Ihre Rechte</h2>
-    <p data-i18n="rightsText">
+      <section class="legal-section">
+        <h2 data-i18n="rightsTitle">7. Ihre Rechte</h2>
+        <p data-i18n="rightsText">
       Soweit wir im Rahmen einer Supportanfrage personenbezogene Daten verarbeiten,
       können Sie Auskunft, Berichtigung, Löschung oder Einschränkung der Verarbeitung
       verlangen und einer Verarbeitung widersprechen. Wenden Sie sich dazu an die
       oben genannte Kontaktadresse. Außerdem können Sie sich bei einer zuständigen
       Datenschutzaufsichtsbehörde beschweren.
-    </p>
+        </p>
+      </section>
 
-    <h2 data-i18n="changesTitle">8. Änderungen dieser Datenschutzerklärung</h2>
-    <p data-i18n="changesText">
+      <section class="legal-section">
+        <h2 data-i18n="changesTitle">8. Änderungen dieser Datenschutzerklärung</h2>
+        <p data-i18n="changesText">
       Wir aktualisieren diese Datenschutzerklärung, wenn sich Funktionen der App
       oder rechtliche Anforderungen ändern. Die jeweils aktuelle Fassung ist unter
       dieser Adresse öffentlich erreichbar.
-    </p>
+        </p>
+      </section>
+    </article>
 
     <footer data-i18n="updated">Stand: 31. Juli 2026</footer>
   </main>
@@ -322,6 +488,8 @@
           pageTitle: "Datenschutzerklärung – GehaltKlar",
           metaDescription: "Datenschutzerklärung für die mobile Anwendung GehaltKlar.",
           languageLabel: "Sprache",
+          legalOverline: "Rechtliches",
+          summaryLabel: "Auf einen Blick",
           heading: "Datenschutzerklärung",
           appLabel: "App:",
           summary: "GehaltKlar verarbeitet Gehaltsangaben ausschließlich lokal auf dem Gerät. Die App verwendet kein Benutzerkonto, keine Werbung, keine Analyse- oder Trackingdienste und übermittelt keine in der App eingegebenen Daten an uns.",
@@ -348,6 +516,8 @@
           pageTitle: "Privacy Policy – GehaltKlar",
           metaDescription: "Privacy policy for the GehaltKlar mobile application.",
           languageLabel: "Language",
+          legalOverline: "Legal information",
+          summaryLabel: "At a glance",
           heading: "Privacy Policy",
           appLabel: "App:",
           summary: "GehaltKlar processes salary information exclusively and locally on the device. The app does not use a user account, advertising, analytics, or tracking services, and it does not transmit any data entered in the app to us.",
@@ -374,6 +544,8 @@
           pageTitle: "Политика конфиденциальности – GehaltKlar",
           metaDescription: "Политика конфиденциальности мобильного приложения GehaltKlar.",
           languageLabel: "Язык",
+          legalOverline: "Правовая информация",
+          summaryLabel: "Кратко",
           heading: "Политика конфиденциальности",
           appLabel: "Приложение:",
           summary: "GehaltKlar обрабатывает данные о заработной плате исключительно локально на устройстве. Приложение не использует учётные записи, рекламу, аналитические сервисы или сервисы отслеживания и не передаёт нам данные, введённые в приложении.",
@@ -400,6 +572,8 @@
           pageTitle: "Політика конфіденційності – GehaltKlar",
           metaDescription: "Політика конфіденційності мобільного застосунку GehaltKlar.",
           languageLabel: "Мова",
+          legalOverline: "Правова інформація",
+          summaryLabel: "Коротко",
           heading: "Політика конфіденційності",
           appLabel: "Застосунок:",
           summary: "GehaltKlar обробляє дані про заробітну плату виключно локально на пристрої. Застосунок не використовує облікові записи, рекламу, аналітичні сервіси чи сервіси відстеження та не передає нам дані, введені в застосунку.",
@@ -426,6 +600,8 @@
           pageTitle: "Chính sách quyền riêng tư – GehaltKlar",
           metaDescription: "Chính sách quyền riêng tư dành cho ứng dụng di động GehaltKlar.",
           languageLabel: "Ngôn ngữ",
+          legalOverline: "Thông tin pháp lý",
+          summaryLabel: "Tóm tắt",
           heading: "Chính sách quyền riêng tư",
           appLabel: "Ứng dụng:",
           summary: "GehaltKlar chỉ xử lý thông tin tiền lương cục bộ trên thiết bị. Ứng dụng không sử dụng tài khoản người dùng, quảng cáo, dịch vụ phân tích hoặc theo dõi và không truyền cho chúng tôi bất kỳ dữ liệu nào được nhập trong ứng dụng.",
@@ -451,7 +627,7 @@
       };
 
       const metaDescription = document.querySelector('meta[name="description"]');
-      const languageButtons = document.querySelectorAll("[data-language]");
+      const languageSelect = document.querySelector("#language-select");
 
       function initialLanguage() {
         return resolveInitialLanguage({
@@ -476,9 +652,7 @@
           }
         });
 
-        languageButtons.forEach((button) => {
-          button.setAttribute("aria-pressed", String(button.dataset.language === activeLanguage));
-        });
+        languageSelect.value = activeLanguage;
 
         if (updateUrl) {
           const url = new URL(window.location.href);
@@ -487,9 +661,7 @@
         }
       }
 
-      languageButtons.forEach((button) => {
-        button.addEventListener("click", () => applyLanguage(button.dataset.language, true));
-      });
+      languageSelect.addEventListener("change", () => applyLanguage(languageSelect.value, true));
 
       window.addEventListener("popstate", () => applyLanguage(initialLanguage()));
       applyLanguage(initialLanguage());

@@ -21,3 +21,11 @@ falls back to German. Regional browser language tags such as `ru-RU`, `uk-UA`,
 and `vi-VN` resolve to their supported base language. The sticky language
 switcher remains visible while scrolling and updates the content and URL without
 reloading the page.
+
+## Interface
+
+The page follows the GehaltKlar Design System: indigo and slate surfaces, a
+reserved gold accent, 4px-based spacing, 16px cards, and 48px controls. The
+language control is a sticky native dropdown with flagged, native language
+names. It uses local CSS and system font fallbacks only, so the legal page does
+not introduce third-party runtime assets.

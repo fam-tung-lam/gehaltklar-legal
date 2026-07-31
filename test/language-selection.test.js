@@ -1,5 +1,6 @@
 import test from "node:test";
 import assert from "node:assert/strict";
+import { readFile } from "node:fs/promises";
 
 import {
   DEFAULT_LANGUAGE,
@@ -39,4 +40,16 @@ test("German is used when no browser preference is supported", () => {
     browserLanguages: ["fr-FR", "es-ES"],
     browserLanguage: "fr-FR"
   }), DEFAULT_LANGUAGE);
+});
+
+test("the page keeps a flagged language dropdown available", async () => {
+  const page = await readFile(new URL("../index.html", import.meta.url), "utf8");
+
+  assert.match(page, /<select id="language-select">/);
+  assert.match(page, /🇩🇪 Deutsch/);
+  assert.match(page, /🇬🇧 English/);
+  assert.match(page, /🇷🇺 Русский/);
+  assert.match(page, /🇺🇦 Українська/);
+  assert.match(page, /🇻🇳 Tiếng Việt/);
+  assert.match(page, /position: sticky;/);
 });
